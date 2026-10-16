@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matemática 6º Ano • English VClass Education</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#64748b;--primary:#315efb;--primary2:#183bba;--ok:#159957;--bad:#d9363e;--line:#dfe5ef;--shadow:0 8px 28px rgba(24,40,72,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.55}
+header{background:linear-gradient(135deg,#172554,#315efb);color:white;padding:28px 20px;position:sticky;top:0;z-index:20;box-shadow:0 4px 18px #17255444}
+.header-inner{max-width:1250px;margin:auto;display:flex;justify-content:space-between;gap:20px;align-items:center}.brand{font-size:1.4rem;font-weight:800}.sub{opacity:.88;font-size:.92rem}.progressbox{min-width:230px}.progressbar{height:9px;background:#ffffff38;border-radius:99px;overflow:hidden}.progressbar span{display:block;height:100%;background:#fff;width:0;transition:.3s}.progresslabel{font-size:.8rem;margin-top:6px;text-align:right}
+.layout{max-width:1250px;margin:auto;display:grid;grid-template-columns:280px 1fr;min-height:calc(100vh - 110px)}
+aside{background:#fff;border-right:1px solid var(--line);padding:18px;position:sticky;top:110px;height:calc(100vh - 110px);overflow:auto}
+aside h3{margin:4px 0 12px;font-size:1rem}.navbtn{width:100%;text-align:left;border:0;background:transparent;padding:10px 11px;border-radius:10px;cursor:pointer;color:var(--text);margin:2px 0;font-size:.92rem}.navbtn:hover,.navbtn.active{background:#eaf0ff;color:var(--primary2);font-weight:700}.tag{float:right;font-size:.72rem;color:var(--muted)}
+main{padding:28px 25px 60px}.hero,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.hero{padding:28px;margin-bottom:20px}.hero h1{margin:0 0 7px;font-size:clamp(1.65rem,3vw,2.45rem)}.hero p{margin:0;color:var(--muted)}.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.badge{padding:5px 10px;border-radius:999px;background:#edf2ff;color:#2346bd;font-size:.78rem;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:20px}.stat{padding:18px}.stat b{font-size:1.65rem}.stat small{display:block;color:var(--muted)}
+.card{padding:22px;margin-bottom:18px}.card h2,.card h3{margin-top:0}.lesson-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.lesson-number{color:var(--primary);font-weight:800;font-size:.85rem}.objective{background:#f0f5ff;border-left:4px solid var(--primary);padding:12px 14px;border-radius:8px;margin:15px 0}.formula{background:#101827;color:#fff;padding:15px;border-radius:12px;font-family:ui-monospace,monospace;overflow:auto}.example{background:#f8fafc;border:1px solid var(--line);padding:15px;border-radius:12px;margin:14px 0}.tip{border-left:4px solid #f59e0b;background:#fffbeb;padding:12px 14px;border-radius:8px}.exercise{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}.q{font-weight:700;margin-bottom:10px}.options{display:grid;gap:8px}.options button{padding:11px 13px;text-align:left;border:1px solid var(--line);background:white;border-radius:10px;cursor:pointer}.options button:hover{border-color:var(--primary);background:#f5f7ff}.options button.correct{border-color:var(--ok);background:#eaf8f0}.options button.wrong{border-color:var(--bad);background:#fff0f1}.feedback{margin-top:9px;font-weight:700}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn{border:0;border-radius:10px;padding:11px 15px;background:var(--primary);color:#fff;cursor:pointer;font-weight:700}.btn.secondary{background:#e8edf5;color:#25314a}.btn.success{background:var(--ok)}.search{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;margin-bottom:12px}
+table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid var(--line);padding:9px;text-align:left}th{background:#f1f5f9}
+footer{max-width:1250px;margin:auto;padding:28px;text-align:center;color:var(--muted);font-size:.85rem}
+.hidden{display:none!important}.toast{position:fixed;right:20px;bottom:20px;background:#111827;color:#fff;padding:12px 16px;border-radius:10px;display:none;z-index:50}
+@media(max-width:900px){.layout{grid-template-columns:1fr}aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}.grid{grid-template-columns:1fr 1fr}.header-inner{flex-direction:column;align-items:stretch}.progressbox{min-width:0}}
+@media(max-width:600px){main{padding:18px 12px 45px}.grid{grid-template-columns:1fr}.hero,.card{padding:17px}.header-inner{gap:10px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="header-inner">
+  <div><div class="brand">📐 Matemática 6º Ano</div><div class="sub">Curso completo • Ensino Fundamental • estudo guiado</div></div>
+  <div class="progressbox"><div class="progressbar"><span id="progressFill"></span></div><div class="progresslabel" id="progressText">0% concluído</div></div>
+ </div>
+</header>
+
+<div class="layout">
+<aside>
+ <input class="search" id="search" placeholder="🔎 Buscar aula..." oninput="filterNav()">
+ <h3>📚 Curso</h3>
+ <button class="navbtn active" onclick="showDashboard()">🏠 Visão geral</button>
+ <div id="nav"></div>
+ <hr>
+ <button class="navbtn" onclick="resetProgress()">♻️ Reiniciar progresso</button>
+</aside>
+
+<main id="app"></main>
+</div>
+<footer>Matemática 6º Ano • Curso digital educacional • <b>English VClass Education</b><br>Conteúdo estruturado para estudo, revisão e prática. © 2026</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const lessons=[
+["Números","01 • Sistema de numeração decimal","Ler, escrever, comparar e decompor números naturais.","EF06MA01 • EF06MA02",`
+<p>Nosso sistema de numeração é <b>decimal</b>: usamos dez algarismos (0 a 9) e o valor de cada algarismo depende da posição.</p>
+<table><tr><th>Classe</th><th>Exemplo</th></tr><tr><td>Unidades</td><td>7</td></tr><tr><td>Milhares</td><td>4.582</td></tr><tr><td>Milhões</td><td>3.205.014</td></tr></table>
+<p>Em <b>5.307</b>, o 5 vale 5.000, o 3 vale 300, o 0 vale 0 dezenas e o 7 vale 7 unidades.</p>
+<div class="formula">5.307 = 5×1000 + 3×100 + 0×10 + 7×1</div>
+<div class="tip">Dica: para comparar números naturais, primeiro observe a quantidade de algarismos. Se for igual, compare da esquerda para a direita.</div>`],
+["Números","02 • Reta numérica e comparação","Ordenar naturais e decimais usando a reta numérica.","EF06MA01",`
+<p>A reta numérica representa números em posições ordenadas. Quanto mais à direita, maior o número.</p>
+<div class="example"><b>Exemplo:</b> 2.450 &lt; 2.540, pois os milhares são iguais e 4 centenas &lt; 5 centenas.</div>
+<p>Com decimais: <b>3,5 = 3,50</b>. Assim, 3,50 &gt; 3,47.</p>
+<div class="formula">Ordem crescente: 1,2 &lt; 1,25 &lt; 1,3</div>`],
+["Números","03 • Adição e subtração","Resolver cálculos e problemas com números naturais.","EF06MA03",`
+<p>Alinhe as ordens corretamente. Em problemas, identifique o que está sendo juntado, retirado, comparado ou descoberto.</p>
+<div class="example"><b>Exemplo:</b> Uma biblioteca tinha 1.285 livros e recebeu 347. <br>1.285 + 347 = <b>1.632</b>.</div>
+<div class="tip">Estime antes: 1.285 + 347 ≈ 1.300 + 350 = 1.650. A resposta 1.632 é razoável.</div>`],
+["Números","04 • Multiplicação e divisão","Compreender estratégias de multiplicação e divisão.","EF06MA03",`
+<p>Multiplicar pode representar grupos iguais. Dividir pode representar repartir ou descobrir quantos grupos cabem.</p>
+<div class="example"><b>24 × 13</b> = 24×10 + 24×3 = 240 + 72 = <b>312</b>.</div>
+<div class="example"><b>156 ÷ 12 = 13</b>, porque 12×13 = 156.</div>
+<p>Na divisão com resto: <b>dividendo = divisor × quociente + resto</b>, com resto menor que o divisor.</p>`],
+["Números","05 • Expressões numéricas","Aplicar a ordem das operações.","EF06MA03",`
+<p>Em uma expressão, resolvemos primeiro <b>parênteses</b>, depois <b>potenciações</b>, depois multiplicações/divisões e, por fim, adições/subtrações.</p>
+<div class="formula">18 + 3 × 4 = 18 + 12 = 30<br>(18 + 3) × 4 = 21 × 4 = 84</div>
+<div class="tip">Operações do mesmo nível são resolvidas da esquerda para a direita.</div>`],
+["Números","06 • Potenciação","Entender potência como multiplicação de fatores iguais.","EF06MA03",`
+<p>Potência é uma forma compacta de escrever multiplicações repetidas.</p>
+<div class="formula">2⁴ = 2×2×2×2 = 16<br>5² = 5×5 = 25</div>
+<p>O número inferior é a <b>base</b>; o superior é o <b>expoente</b>. Quadrado significa expoente 2; cubo, expoente 3.</p>`],
+["Números","07 • Paridade, múltiplos e divisores","Reconhecer pares, ímpares, múltiplos e divisores.","EF06MA04 • EF06MA05 • EF06MA06",`
+<p>Número <b>par</b> termina em 0, 2, 4, 6 ou 8. Ímpar termina em 1, 3, 5, 7 ou 9.</p>
+<p>Se 24 = 6×4, então 24 é múltiplo de 6 e 4 é divisor de 24.</p>
+<div class="example">Múltiplos de 5: 0, 5, 10, 15, 20, 25...</div>
+<div class="tip">Critério do 3: a soma dos algarismos deve ser múltipla de 3. Ex.: 123 → 1+2+3=6.</div>`],
+["Números","08 • Primos, compostos, MDC e MMC","Fatorar e resolver situações com divisores e múltiplos.","EF06MA05 • EF06MA06",`
+<p>Número primo tem exatamente dois divisores positivos: 1 e ele mesmo. Ex.: 2, 3, 5, 7, 11.</p>
+<p>O <b>MDC</b> ajuda em divisões ou agrupamentos máximos. O <b>MMC</b> ajuda quando queremos encontrar um primeiro múltiplo comum.</p>
+<div class="example">MDC(12,18)=6. MMC(4,6)=12.</div>
+<div class="formula">12 = 2²×3 &nbsp;&nbsp; 18 = 2×3²<br>MDC = 2×3 = 6</div>`],
+["Números","09 • Frações: parte, todo e equivalência","Interpretar, comparar e encontrar frações equivalentes.","EF06MA07",`
+<p>Em <b>3/5</b>, 3 é o numerador e 5 o denominador. O denominador indica em quantas partes iguais o todo foi dividido; o numerador indica quantas partes foram consideradas.</p>
+<div class="formula">1/2 = 2/4 = 3/6 = 4/8</div>
+<p>Frações equivalentes representam a mesma quantidade.</p>`],
+["Números","10 • Frações: operações","Somar e subtrair frações e calcular fração de uma quantidade.","EF06MA09 • EF06MA10",`
+<p>Com denominadores iguais, mantenha o denominador e opere os numeradores.</p>
+<div class="formula">2/7 + 3/7 = 5/7</div>
+<p>Com denominadores diferentes, procure um denominador comum, frequentemente usando o MMC.</p>
+<div class="formula">1/3 + 1/6 = 2/6 + 1/6 = 3/6 = 1/2</div>
+<div class="example">3/4 de 20 = 20÷4×3 = <b>15</b>.</div>`],
+["Números","11 • Decimais e frações","Converter e relacionar representações fracionária e decimal.","EF06MA08",`
+<p>Décimos, centésimos e milésimos correspondem a denominadores 10, 100 e 1000.</p>
+<div class="formula">0,7 = 7/10 &nbsp; | &nbsp; 0,25 = 25/100 = 1/4</div>
+<p>Para comparar decimais, iguale a quantidade de casas: 0,5 = 0,50. Então 0,50 &gt; 0,47.</p>`],
+["Números","12 • Operações com números racionais","Calcular com decimais em situações reais.","EF06MA11",`
+<p>Nas quatro operações com decimais, atenção ao valor posicional. Na multiplicação, conte as casas decimais dos fatores para posicionar a vírgula.</p>
+<div class="example">12,5 + 3,75 = <b>16,25</b><br>4,2 × 0,5 = <b>2,1</b></div>
+<p>Use estimativa para conferir se o resultado faz sentido.</p>`],
+["Números","13 • Arredondamento e estimativas","Aproximar números e avaliar a razoabilidade de resultados.","EF06MA12",`
+<p>Para arredondar, observe o algarismo seguinte. De 5 em diante, aumentamos uma unidade; de 0 a 4, mantemos.</p>
+<div class="formula">3.748 para a centena mais próxima → 3.700<br>3.758 para a centena mais próxima → 3.800</div>
+<p>Também podemos aproximar para potências de 10: dezenas, centenas, milhares etc.</p>`],
+["Números","14 • Porcentagem e educação financeira","Resolver porcentagens por estratégias e cálculo mental.","EF06MA13",`
+<p>Porcentagem significa “por 100”. Assim, 25% = 25/100 = 0,25.</p>
+<div class="example">25% de R$200 = 1/4 de 200 = <b>R$50</b>.</div>
+<div class="formula">10% = dividir por 10<br>50% = metade<br>25% = quarta parte<br>1% = dividir por 100</div>
+<div class="tip">No 6º ano, priorize estratégias de proporcionalidade e cálculo mental; não dependa da regra de três.</div>`],
+["Álgebra","15 • Igualdade e valor desconhecido","Usar relações de igualdade para descobrir valores.","EF06MA14",`
+<p>Uma igualdade permanece verdadeira quando fazemos a mesma operação nos dois membros.</p>
+<div class="formula">x + 7 = 19<br>x + 7 − 7 = 19 − 7<br>x = 12</div>
+<p>Pense na igualdade como uma balança: o que você faz de um lado precisa fazer do outro.</p>`],
+["Álgebra","16 • Razão e partilha proporcional","Resolver partilhas em partes desiguais e relações entre quantidades.","EF06MA15",`
+<p>Razão compara duas quantidades. Em uma divisão na razão 2:3, o total corresponde a 5 partes iguais.</p>
+<div class="example">R$50 na razão 2:3 → 5 partes; cada parte R$10 → R$20 e R$30.</div>`],
+["Geometria","17 • Plano cartesiano","Localizar e representar pontos no 1º quadrante.","EF06MA16",`
+<p>O plano cartesiano usa dois eixos: x (horizontal) e y (vertical). Um ponto é indicado por um par ordenado (x,y).</p>
+<div class="formula">(2,3) → 2 no eixo x e 3 no eixo y.</div>
+<p>Leia sempre primeiro a coordenada horizontal e depois a vertical.</p>`],
+["Geometria","18 • Polígonos e classificação","Identificar e classificar polígonos.","EF06MA18 • EF06MA19",`
+<p>Polígono é uma figura plana fechada formada por segmentos de reta.</p>
+<table><tr><th>Lados</th><th>Nome</th></tr><tr><td>3</td><td>triângulo</td></tr><tr><td>4</td><td>quadrilátero</td></tr><tr><td>5</td><td>pentágono</td></tr><tr><td>6</td><td>hexágono</td></tr><tr><td>8</td><td>octógono</td></tr></table>`],
+["Geometria","19 • Triângulos e quadriláteros","Classificar figuras por lados e ângulos e reconhecer propriedades.","EF06MA19 • EF06MA20",`
+<p>Triângulos podem ser classificados pelos lados: equilátero, isósceles e escaleno; ou pelos ângulos: acutângulo, retângulo e obtusângulo.</p>
+<p>Quadriláteros incluem quadrado, retângulo, losango, paralelogramo e trapézio.</p>`],
+["Geometria","20 • Simetria, ampliação e redução","Perceber semelhança e escala em malhas e desenhos.","EF06MA21 • EF06MA22",`
+<p>Na ampliação ou redução, todas as medidas lineares correspondentes são multiplicadas pelo mesmo fator.</p>
+<div class="example">Um lado de 4 cm ampliado por fator 2 vira 8 cm. O desenho mantém a forma.</div>`],
+["Geometria","21 • Retas, paralelas e perpendiculares","Reconhecer relações entre retas e construir representações.","EF06MA23",`
+<p>Retas <b>paralelas</b> não se encontram no plano. Retas <b>perpendiculares</b> formam ângulo de 90°.</p>
+<div class="formula">paralelas: ∥ &nbsp;&nbsp; perpendicular: ⟂</div>`],
+["Geometria","22 • Sólidos geométricos","Reconhecer prismas, pirâmides, faces, arestas e vértices.","EF06MA17",`
+<p>Prismas possuem duas bases congruentes e paralelas. Pirâmides possuem uma base e faces laterais triangulares.</p>
+<p>Elementos: <b>faces</b> são superfícies; <b>arestas</b> são segmentos de encontro; <b>vértices</b> são pontos de encontro.</p>
+<div class="example">Um cubo possui 6 faces, 12 arestas e 8 vértices.</div>`],
+["Grandezas","23 • Comprimento, massa, capacidade e tempo","Escolher unidades e converter medidas.","EF06MA24",`
+<p>Unidades comuns: metro (m), centímetro (cm), quilômetro (km), quilograma (kg), grama (g), litro (L), mililitro (mL).</p>
+<div class="formula">1 km = 1000 m<br>1 m = 100 cm<br>1 kg = 1000 g<br>1 L = 1000 mL</div>
+<p>Em tempo: 1 h = 60 min; 1 min = 60 s.</p>`],
+["Grandezas","24 • Perímetro e área","Calcular e interpretar perímetros e áreas de figuras simples.","EF06MA24 • EF06MA29",`
+<p><b>Perímetro</b> é o contorno. <b>Área</b> mede a superfície ocupada.</p>
+<div class="formula">Retângulo: P = 2×(comprimento+largura)<br>Retângulo: A = comprimento×largura</div>
+<div class="example">Retângulo 8 m × 3 m → P=22 m e A=24 m².</div>`],
+["Grandezas","25 • Ângulos","Reconhecer, comparar, medir e classificar ângulos.","EF06MA25 • EF06MA26 • EF06MA27",`
+<p>Ângulo é a abertura formada por duas semirretas com a mesma origem.</p>
+<table><tr><th>Tipo</th><th>Medida</th></tr><tr><td>Agudo</td><td>menor que 90°</td></tr><tr><td>Reto</td><td>90°</td></tr><tr><td>Obtuso</td><td>entre 90° e 180°</td></tr><tr><td>Raso</td><td>180°</td></tr></table>
+<p>O transferidor é usado para medir a abertura.</p>`],
+["Grandezas","26 • Plantas baixas e vistas","Interpretar desenhos de espaços e relações de comprimento e área.","EF06MA28",`
+<p>Plantas baixas representam ambientes vistos de cima. É importante observar escala, medidas, portas, paredes e disposição dos objetos.</p>
+<div class="tip">Em uma planta, uma medida pequena pode representar uma distância real maior. A legenda ou escala informa essa relação.</div>`],
+["Probabilidade e Estatística","27 • Tabelas e leitura de dados","Organizar, ler e interpretar informações em tabelas.","EF06MA31 • EF06MA32",`
+<p>Tabelas organizam dados em linhas e colunas. Antes de calcular, identifique título, categorias, unidade e período.</p>
+<table><tr><th>Fruta</th><th>Votos</th></tr><tr><td>Maçã</td><td>12</td></tr><tr><td>Banana</td><td>8</td></tr><tr><td>Laranja</td><td>10</td></tr></table>
+<p>Total = 30 votos. Maçã representa 12/30 do total.</p>`],
+["Probabilidade e Estatística","28 • Gráficos","Ler, comparar e interpretar gráficos de colunas, barras e setores.","EF06MA32 • EF06MA33",`
+<p>Gráficos tornam padrões mais visíveis. Observe sempre escala, título e legenda.</p>
+<div class="example"><b>Exemplo:</b> se uma barra representa 40 alunos e outra 25, a primeira tem 15 alunos a mais.</div>
+<div class="tip">Cuidado com escalas que não começam em zero: elas podem aumentar visualmente diferenças pequenas.</div>`],
+["Probabilidade e Estatística","29 • Média e síntese de dados","Calcular média aritmética simples e interpretar resultados.","EF06MA32 • EF06MA33",`
+<p>A média aritmética é obtida somando os valores e dividindo pela quantidade de valores.</p>
+<div class="formula">Média = soma dos valores ÷ quantidade de valores</div>
+<div class="example">Notas 6, 7, 8 e 9 → soma 30 → média = 30÷4 = <b>7,5</b>.</div>`],
+["Probabilidade e Estatística","30 • Probabilidade","Determinar possibilidades e probabilidades simples.","EF06MA30 • EF06MA31",`
+<p>Probabilidade mede a chance de um evento ocorrer. Em situações equiprováveis:</p>
+<div class="formula">P(evento) = casos favoráveis ÷ casos possíveis</div>
+<div class="example">Em um dado comum, P(sair 6)=1/6. P(sair número par)=3/6=1/2.</div>
+<p>Quanto mais próximo de 1 (ou 100%), maior a chance.</p>`],
+["Revisão","31 • Projeto integrado: matemática no cotidiano","Aplicar números, porcentagens, medidas, geometria e dados em um problema real.","Revisão geral",`
+<p>Imagine organizar uma pequena feira escolar. Você precisa calcular preços, descontos, quantidades, área de uma barraca, medidas, divisão de materiais e interpretar os resultados de uma pesquisa.</p>
+<div class="example"><b>Desafio:</b> uma turma arrecadou R$480. Gastou 25% em materiais. Quanto restou?<br>25% de 480 = 120 → restante = <b>R$360</b>.</div>
+<p>O objetivo é escolher a ferramenta matemática adequada, explicar o raciocínio e verificar se a resposta é razoável.</p>`],
+["Revisão","32 • Simulado final do 6º ano","Revisar os principais conhecimentos antes de avançar para o 7º ano.","Todas",`
+<p>Faça o simulado sem consultar as aulas. Depois, reveja cada erro e volte à aula correspondente.</p>
+<div class="tip">Regra de ouro: erro não é fracasso; é diagnóstico. Registre o que errou, por que errou e qual estratégia funciona.</div>`]
+];
+
+const questions=[
+["01","Qual é a decomposição correta de 4.305?","4.000 + 300 + 5","400 + 30 + 5","4.000 + 30 + 5","4.000 + 300 + 50","A"],
+["02","Qual é maior?","3,07","3,7","3,17","3,70 e 3,7 são diferentes","B"],
+["03","Quanto é 24 × 13?","292","302","312","322","C"],
+["04","Qual é primo?","21","27","29","33","C"],
+["05","Quanto é 2/5 de 20?","4","6","8","10","C"],
+["06","0,75 corresponde a qual fração simplificada?","1/2","2/3","3/4","4/5","C"],
+["07","25% de 200 é:","25","40","50","75","C"],
+["08","Se x + 9 = 20, x vale:","9","10","11","12","C"],
+["09","O ponto (4,2) tem coordenada x igual a:","2","4","6","8","B"],
+["10","Um ângulo de 90° é:","agudo","reto","obtuso","raso","B"],
+["11","Um cubo possui quantas arestas?","6","8","10","12","D"],
+["12","2,5 m equivalem a:","25 cm","250 cm","2.500 cm","0,25 cm","B"],
+["13","Área de um retângulo 7×4 é:","11","22","28","32","C"],
+["14","Ao lançar um dado, a chance de sair número par é:","1/6","2/6","3/6","5/6","C"],
+["15","Notas 5, 7 e 9 têm média:","6","7","8","9","B"],
+["16","MMC(4,6) é:","8","10","12","24","C"]
+];
+
+const state=JSON.parse(localStorage.getItem("math6progress")||'{"done":[],"score":0,"attempts":0}');
+function save(){localStorage.setItem("math6progress",JSON.stringify(state));updateProgress();}
+function updateProgress(){
+ let pct=Math.round(state.done.length/lessons.length*100);
+ document.getElementById("progressFill").style.width=pct+"%";
+ document.getElementById("progressText").textContent=`${pct}% concluído • ${state.done.length}/${lessons.length} aulas`;
+}
+function buildNav(){
+ const nav=document.getElementById("nav");nav.innerHTML="";
+ lessons.forEach((l,i)=>{let b=document.createElement("button");b.className="navbtn";b.dataset.title=l[1].toLowerCase();b.onclick=()=>showLesson(i);b.innerHTML=`${state.done.includes(i)?"✅":"○"} ${l[1]} <span class="tag">${l[0]}</span>`;nav.appendChild(b)});
+}
+function filterNav(){let q=document.getElementById("search").value.toLowerCase();document.querySelectorAll("#nav .navbtn").forEach(b=>b.style.display=b.dataset.title.includes(q)?"block":"none")}
+function showDashboard(){
+ document.querySelectorAll(".navbtn").forEach(x=>x.classList.remove("active"));
+ document.getElementById("app").innerHTML=`
+ <section class="hero"><h1>Matemática do 6º Ano</h1><p>Uma trilha completa de aprendizagem, prática e revisão para dominar os conteúdos essenciais dos anos finais.</p><div class="badges"><span class="badge">32 aulas</span><span class="badge">BNCC</span><span class="badge">Quiz automático</span><span class="badge">Funciona offline</span></div></section>
+ <div class="grid"><div class="card stat"><b>${lessons.length}</b><small>Aulas estruturadas</small></div><div class="card stat"><b>${questions.length}</b><small>Questões no simulado</small></div><div class="card stat"><b>${state.score}</b><small>Acertos registrados</small></div></div>
+ <div class="card"><h2>🧭 Como estudar</h2><ol><li>Comece pela Aula 01 e avance em ordem.</li><li>Leia a explicação e refaça os exemplos no papel.</li><li>Resolva o exercício da aula antes de marcar como concluída.</li><li>Ao terminar cada bloco, faça uma revisão.</li><li>Finalize com o Simulado do 6º ano.</li></ol><div class="actions"><button class="btn" onclick="showLesson(0)">▶ Começar Aula 01</button><button class="btn secondary" onclick="showQuiz()">📝 Abrir Simulado</button></div></div>
+ <div class="card"><h2>🗂️ Mapa do curso</h2>${["Números","Álgebra","Geometria","Grandezas","Probabilidade e Estatística","Revisão"].map(x=>`<p>• <b>${x}</b> — ${lessons.filter(l=>l[0]===x).length} aulas</p>`).join("")}</div>
+ <div class="card"><h2>🎯 Meta de domínio</h2><p>Procure atingir pelo menos <b>80%</b> no simulado e refazer as aulas associadas às questões erradas.</p></div>`;
+}
+function showLesson(i){
+ const l=lessons[i];
+ document.querySelectorAll("#nav .navbtn").forEach((b,j)=>b.classList.toggle("active",j===i));
+ document.getElementById("app").innerHTML=`
+ <div class="card"><div class="lesson-head"><div><div class="lesson-number">${l[0]} • AULA ${i+1} DE ${lessons.length}</div><h1>${l[1]}</h1></div><span class="badge">${l[3]}</span></div>
+ <div class="objective"><b>🎯 Objetivo:</b> ${l[2]}</div>${l[4]}
+ <div class="exercise"><h3>🧠 Prática rápida</h3>${lessonQuestion(i)}</div>
+ <div class="actions"><button class="btn success" onclick="completeLesson(${i})">${state.done.includes(i)?"✓ Aula concluída":"✓ Marcar aula como concluída"}</button>${i<lessons.length-1?`<button class="btn secondary" onclick="showLesson(${i+1})">Próxima aula →</button>`:"<button class=\"btn\" onclick=\"showQuiz()\">Abrir simulado →</button>"}</div></div>`;
+}
+function lessonQuestion(i){
+ const bank=[
+["Qual é o valor do algarismo 7 em 7.245?","7.000","700","70","7","A"],
+["Qual é o maior número?","2,08","2,8","2,18","2,80","B"],
+["1.500 − 675 =","725","825","925","1.175","B"],
+["72 ÷ 8 =","7","8","9","10","C"],
+["3² é igual a:","5","6","9","12","C"],
+["Qual é múltiplo de 6?","14","18","22","25","B"],
+["Qual é equivalente a 1/2?","2/3","2/4","3/5","4/10","B"],
+["2/3 + 1/3 =","1/3","2/3","1","4/3","C"],
+["0,4 como fração é:","4/10","4/100","40/1000","1/40","A"],
+["10% de 90 é:","0,9","9","10","18","B"],
+["Se x−5=12, x é:","7","12","17","60","C"],
+["O eixo horizontal é o eixo:","x","y","z","r","A"],
+["Figura com 5 lados:","quadrado","pentágono","hexágono","trapézio","B"],
+["Ângulo de 120° é:","agudo","reto","obtuso","raso","C"],
+["1,5 L =","15 mL","150 mL","1.500 mL","15.000 mL","C"],
+["Perímetro de quadrado lado 6 cm:","12","18","24","36","C"],
+["Um prisma possui duas bases:","sempre triangulares","congruentes e paralelas","circulares","iguais às faces laterais","B"],
+["Em uma tabela, 12 de 30 alunos escolheram A. Quantos não escolheram A?","12","18","20","42","B"],
+["Ao lançar uma moeda justa, P(cara) é:","0","1/4","1/2","1","C"],
+["Média de 4, 6 e 8:","5","6","7","8","B"],
+["1 km equivale a:","10 m","100 m","1.000 m","10.000 m","C"],
+["Um ângulo reto mede:","45°","90°","180°","360°","B"],
+["Área de 5×3:","8","15","16","30","B"],
+["25% de 80:","10","15","20","25","C"],
+["MDC de 12 e 18:","3","4","6","9","C"],
+["MMC de 4 e 6:","8","10","12","24","C"],
+["3/4 de 16:","8","10","12","14","C"],
+["Qual é par?","17","21","26","35","C"],
+["2,50 é igual a:","2,05","2,5","25","0,25","B"],
+["Um cubo tem quantos vértices?","6","8","10","12","B"],
+["Retângulo 8×3: área =","11","22","24","32","C"],
+["Em um dado, números pares são:","1,2,3","2,4,6","1,3,5","4,5,6","B"]
+ ];
+ const q=bank[i]||bank[i%bank.length];
+ return `<div class="q">${q[0]}</div><div class="options">${["A","B","C","D"].map((x,k)=>`<button onclick="answer(this,'${q[5]}', '${x}',${i})"><b>${x})</b> ${q[k+1]}</button>`).join("")}</div><div class="feedback" id="fb${i}"></div>`;
+}
+function answer(btn,correct,chosen,i){
+ const box=btn.parentElement, all=[...box.children];all.forEach(b=>b.disabled=true);
+ if(chosen===correct){btn.classList.add("correct");document.getElementById("fb"+i).textContent="✅ Correto! Excelente.";state.score++}
+ else{btn.classList.add("wrong");document.getElementById("fb"+i).textContent=`❌ Ainda não. A resposta correta é ${correct}. Revise a explicação.`}
+ state.attempts++;save();showToast(chosen===correct?"Resposta correta!":"Revise e tente novamente.");
+}
+function completeLesson(i){if(!state.done.includes(i)){state.done.push(i);save();buildNav();showToast("Aula concluída e progresso salvo!")}showLesson(i)}
+function showQuiz(){
+ document.querySelectorAll(".navbtn").forEach(x=>x.classList.remove("active"));
+ let qs=questions.map((q,i)=>`<div class="exercise"><div class="q">${i+1}. ${q[1]}</div><div class="options">${["A","B","C","D"].map((x,k)=>`<button onclick="quizAnswer(this,'${q[6]}', '${x}',${i})"><b>${x})</b> ${q[k+2]}</button>`).join("")}</div><div class="feedback" id="qfb${i}"></div></div>`).join("");
+ document.getElementById("app").innerHTML=`<section class="hero"><h1>📝 Simulado Final</h1><p>${questions.length} questões para revisar os principais conteúdos do 6º ano.</p></section><div class="card">${qs}<div class="actions"><button class="btn" onclick="finishQuiz()">📊 Ver resultado</button></div><div id="quizResult"></div></div>`;
+ window.quizHits=0;window.quizAnswered=0;
+}
+function quizAnswer(btn,correct,chosen,i){let box=btn.parentElement;if(box.dataset.done)return;box.dataset.done=1;[...box.children].forEach(b=>b.disabled=true);window.quizAnswered++;if(chosen===correct){btn.classList.add("correct");window.quizHits++;document.getElementById("qfb"+i).textContent="✅ Correto"}else{btn.classList.add("wrong");document.getElementById("qfb"+i).textContent=`❌ Correta: ${correct}`} }
+function finishQuiz(){let a=window.quizAnswered||0,h=window.quizHits||0;let pct=a?Math.round(h/a*100):0;document.getElementById("quizResult").innerHTML=`<div class="objective"><h2>Resultado: ${h}/${a} respondidas • ${pct}%</h2>${a<questions.length?"Complete todas as questões para uma avaliação final mais confiável.":pct>=80?"🎉 Excelente! Você está pronto para revisar os pontos mais difíceis.":"📚 Recomendação: volte às aulas relacionadas aos erros e refaça o simulado."}</div>`;state.score+=h;save()}
+function resetProgress(){if(confirm("Apagar todo o progresso deste curso?")){state.done=[];state.score=0;state.attempts=0;save();buildNav();showDashboard()}}
+function showToast(t){let e=document.getElementById("toast");e.textContent=t;e.style.display="block";setTimeout(()=>e.style.display="none",1800)}
+buildNav();updateProgress();showDashboard();
+</script>
+</body>
+</html>
